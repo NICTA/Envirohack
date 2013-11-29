@@ -33,6 +33,8 @@
 
 var map = null;
 $("#submit").click(function() {
+  if(map !== null)
+    map.remove();
   var input = $(this.form).find("input").val();
   $.getJSON("http://envirohack.research.nicta.com.au/fsdf-topology/units/" + input, function( data ) {
     var name = data.unitName;
@@ -59,7 +61,3 @@ $("#submit").click(function() {
   });
   return false;
 });
-
-$("#reset").click(function(){
-  map.remove();
-})
