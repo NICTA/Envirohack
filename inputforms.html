@@ -9,19 +9,34 @@
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
 </head>
 <body>
-</body>
     <div align="center">
         <h1>LGA Inputs</h1>
 		<form class="navbar-form navbar-left" role="search">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Country">
-            <input type="text" class="form-control" placeholder="State">
-            <input type="text" class="form-control" placeholder="LGA">
+            
+            <input type="text" class="form-control" placeholder="LGA ID">
           </div>
             <br>
             <br>
-          <button type="submit" class="btn btn-default">Submit</button>
+          <button id="submit" type="submit" class="btn btn-default">Submit</button>
         </form>
 	</div>
+
+    <div id="targetDiv">
+        
+    </div>
+
+    <script>
+        var thing;
+        $("#submit").click(function() {
+          console.log("there");
+          $.getJSON("http://envirohack.research.nicta.com.au/fsdf-topology/units/root", function( data ) {
+              console.log(data.simplifiedGeometryURL);
+            });
+           return false;
+        });
+    </script>
+
+</body>
 </html>
 
