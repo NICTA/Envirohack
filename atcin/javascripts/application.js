@@ -1,10 +1,6 @@
 // var map = L.map('map').setView([33.8600, 151.2111], 13);
 
 
-// L.marker([51.5, -0.09]).addTo(map)
-// L.marker([-34.320178992999956,150.92623500800005]).addTo(map)
-//  .bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
-
 // L.circle([51.508, -0.11], 500, {
 //   color: 'red',
 //   fillColor: '#f03',
@@ -44,13 +40,14 @@ $("#submit").click(function() {
       if(features){
         for(var i=0; i < features.length; i++){
           var coors = features[i].geometry.coordinates;
-          console.log(coors);
-          console.log(coors[0][0][0]);
-          map = L.map('map').setView(coors[0][0][0], 8);
+          var center = coors[0][0][0];
+          map = L.map('map').setView(center, 8);
           L.tileLayer('http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png', {
             maxZoom: 18,
             attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>'
           }).addTo(map);
+          L.marker(center).addTo(map)
+           .bindPopup(name).openPopup();
           var popup = L.popup();
           L.multiPolygon(
             coors
