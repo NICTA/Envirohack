@@ -14,7 +14,7 @@
 		<form class="navbar-form navbar-left" role="search">
           <div class="form-group">
             
-            <input type="text" class="form-control" placeholder="LGA ID">
+            <input id="idNum" name="idNum" type="text" class="form-control" placeholder="LGA ID">
           </div>
             <br>
             <br>
@@ -27,11 +27,17 @@
     </div>
 
     <script>
-        var thing;
+        
+        
         $("#submit").click(function() {
-          console.log("there");
-          $.getJSON("http://envirohack.research.nicta.com.au/fsdf-topology/units/root", function( data ) {
+            var idVal=$('#idNum').val();
+            var link="http://envirohack.research.nicta.com.au/fsdf-topology/units/"+idVal;
+          $.getJSON(link, function( data ) {
+              console.log(link);
               console.log(data.simplifiedGeometryURL);
+                $.getJSON(data.simplifiedGeometryURL, function( data ) {
+                    console.log(data)
+                });
             });
            return false;
         });
