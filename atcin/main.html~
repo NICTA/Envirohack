@@ -13,7 +13,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <h1>LGA Inputs</h1>
+  <h1>Atcin</h1>
+  <h1>LGA Explorer</h1>
   <form class="navbar-form navbar-left" role="search">
     <div class="form-group">
       <input type="text" class="form-control" placeholder="LGA ID" value="158">
