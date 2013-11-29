@@ -32,6 +32,24 @@ $("#submit").click(function() {
   if(map !== null)
     map.remove();
   var input = $(this.form).find("input").val();
+  $.getJSON("http://envirohack.research.nicta.com.au/fsdf-topology/units/" + input + "/parent", function( data ) {
+    console.log(data.unitName);
+    $("#parent").html("<strong>Parent</strong>: " + data.unitName);
+  });
+  $.getJSON("http://envirohack.research.nicta.com.au/fsdf-topology/units/" + input + "/children/?unitType=LGA", function( data ) {
+    if(data !== [])
+    {
+      var output = "<strong>Children: </strong><br/><ul>";
+      for(var i=0; i < data.length; i++){
+        output += "<li>" + data[i].unitName +"</li>"
+      };
+      output += "</ul>";
+      $("#children").html(output);
+    }
+  });
+  // $.getJSON("http://envirohack.research.nicta.com.au/fsdf-topology/units/" + input + "/adjacent?unitType=LGA", function( data ) {
+  //   console.log(data);
+  // });
   $.getJSON("http://envirohack.research.nicta.com.au/fsdf-topology/units/" + input, function( data ) {
     var name = data.unitName;
     var url = data.simplifiedGeometryURL;
